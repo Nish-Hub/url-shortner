@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class UrlShortenerUtil {
 
-    static AtomicInteger intCounter = new AtomicInteger(Integer.MIN_VALUE);
+    static AtomicInteger intCounter = new AtomicInteger(0);
 
     static StringBuffer stringPrefix = new StringBuffer();
 
@@ -18,7 +18,7 @@ public class UrlShortenerUtil {
 
     private static String getNextSuffix(){
         if(intCounter.get()==Integer.MAX_VALUE){
-            intCounter.set(Integer.MIN_VALUE);
+            intCounter.set(0);
             String nextStringPrefix = getNextString();
             return nextStringPrefix+intCounter;
         }
