@@ -18,19 +18,19 @@ public class UrlShortnerController {
     }
 
     @PostMapping("/shorten")
-    public String shortenUrl(Map<String,String> data) throws UrlNotShortened {
+    public String shortenUrl(@RequestBody Map<String,String> data) throws UrlNotShortened {
 
         String originalUrl = data.get("url");
 
         // shorten the url
-        return this.urlShortnerService.getShortUrl(originalUrl);
+        return this.urlShortnerService.shortenUrl(originalUrl);
 
     }
 
     @GetMapping("/{shortCode}")
     public String redirect(@PathVariable String shortCode) throws UrlNotShortened {
 
-        return this.urlShortnerService.getShortUrl(shortCode);
+        return this.urlShortnerService.getOriginalUrl(shortCode);
     }
 
 }
